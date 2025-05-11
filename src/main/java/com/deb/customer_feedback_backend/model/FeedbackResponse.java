@@ -15,6 +15,8 @@ public class FeedbackResponse {
 
     @ManyToOne
     private Form form;
+    
+    private ESentiment sentiment;
 
     private LocalDateTime submittedAt;
     private String submittedBy;

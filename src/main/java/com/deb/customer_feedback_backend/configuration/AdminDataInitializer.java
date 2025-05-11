@@ -36,13 +36,13 @@ public class AdminDataInitializer implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		try {
-            if(!userRepository.existsByRolesIn(Set.of(ERole.SUPER_ADMIN))) {
+            if(!userRepository.existsByRolesIn(Set.of(ERole.ROLE_SUPER_ADMIN))) {
                 User user = User.builder()
                         .name(adminName)
                         .email(adminEmail)
                         .active(true)
                         .password(passwordEncoder.encode(adminPassword))
-                        .roles(Set.of(ERole.SUPER_ADMIN))
+                        .roles(Set.of(ERole.ROLE_SUPER_ADMIN))
                         .build();
                 userRepository.saveAndFlush(user);
             }
