@@ -17,5 +17,5 @@ public class Plan {
     private int maxForms;
     private int maxResponsesPerMonth;
     private BigDecimal price;
-    private String billingPeriod;
+    private EBillingPeriod billingPeriod;
 }
