@@ -19,6 +19,11 @@ public class GlobalExceptionHandler {
 	
 	@ExceptionHandler(exception = BadCredentialsException.class)
 	public ResponseEntity<?> handleBadCredentialsException(BadCredentialsException ex, WebRequest request){
-		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new MessageResponse("Email/Password credential not matched"));
+		return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new MessageResponse("Email/Password credential not matched"));
+	}
+	
+	@ExceptionHandler(exception = ResourceNotFoundException.class)
+	public ResponseEntity<?> handleResourceNotFoundException(ResourceNotFoundException ex, WebRequest request){
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new MessageResponse("Requested object Not found"));
 	}
 }

@@ -65,13 +65,10 @@ public class SecurityConfig {
                 .authorizeHttpRequests(
                         (authRequest) ->
                                 authRequest.requestMatchers("/").permitAll()
-                                        .requestMatchers("/api-docs",
-                                                "/configuration/ui",
-                                                "/api-docs/**",
-                                                "/swagger-resources/**",
-                                                "/configuration/security",
+                                        .requestMatchers("/v3/api-docs/**",
                                                 "/swagger-ui/**",
                                                 "/swagger-ui.html",
+                                                "/swagger-resources/**",
                                                 "/webjars/**").permitAll()
                                         .requestMatchers("/account/register").permitAll()
                                         .requestMatchers("/account/login").permitAll()
@@ -80,7 +77,7 @@ public class SecurityConfig {
                                         .requestMatchers("/account/forget-password").permitAll()
                                         .requestMatchers("/account/forget-password/verify").permitAll()
                                         .requestMatchers("/account/reset-password").permitAll()
-                                        .anyRequest().authenticated())
+                                        .anyRequest().anonymous())
                 .authenticationProvider(authenticationProvider());
         http.addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
