@@ -34,14 +34,14 @@ public class Root {
 
     @CreatedDate
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    protected LocalDateTime creationDate;
+    protected LocalDateTime createdAt;
 
     @LastModifiedBy
     protected String lastModifiedBy;
 
     @LastModifiedDate
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    protected LocalDateTime lastModifiedDate;
+    protected LocalDateTime lastModifiedAt;
 
     public Long getCreatedByUserId() {
         try {
