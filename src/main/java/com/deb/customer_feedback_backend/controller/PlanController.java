@@ -23,7 +23,7 @@ import com.deb.customer_feedback_backend.service.PlanService;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/api/plan")
+@RequestMapping("/plan")
 public class PlanController {
 	@Autowired
     private PlanService planService;
