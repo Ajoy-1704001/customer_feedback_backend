@@ -22,7 +22,7 @@ public class RefreshTokenHelper {
 	@Autowired
     private RefreshTokenRepository refreshTokenRepository;
     
-    public String createRefreshToken(Long userId) {
+    public String createRefreshToken(Long userId, boolean rememberMe) {
         RefreshToken refreshToken = new RefreshToken();
 
         Optional<RefreshToken> existingToken = refreshTokenRepository.findTopByUserIdOrderByCreatedAtDesc(userId);
@@ -31,8 +31,12 @@ public class RefreshTokenHelper {
             refreshTokenRepository.delete(existingToken.get());
         }
 
-        refreshToken.setUserId(userId);;
-        refreshToken.setExpiryDate(Instant.now().plusMillis(refreshTokenDurationMs));
+        refreshToken.setUserId(userId);
+        long refreshTokenDuration = refreshTokenDurationMs;
+        if(rememberMe) {
+        	refreshTokenDuration = refreshTokenDuration * 10;
+        }
+        refreshToken.setExpiryDate(Instant.now().plusMillis(refreshTokenDuration));
         refreshToken.setToken(UUID.randomUUID().toString());
 
         refreshToken = refreshTokenRepository.saveAndFlush(refreshToken);

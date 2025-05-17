@@ -61,7 +61,7 @@ public class AuthService {
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtTokenProvider.generateJwt(authentication);
-        String refreshToken = refreshTokenHelper.createRefreshToken(user.getId());
+        String refreshToken = refreshTokenHelper.createRefreshToken(user.getId(), loginRequest.isRememberMe());
         UserPrincipal userDetails = (UserPrincipal) authentication.getPrincipal();
         List<String> roles = userDetails.getAuthorities().stream()
                 .map(item -> item.getAuthority())
