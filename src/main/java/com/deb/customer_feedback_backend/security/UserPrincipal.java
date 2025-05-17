@@ -75,5 +75,17 @@ public class UserPrincipal implements UserDetails{
 	public String getEmail() {
 		return email;
 	}
+	
+	public String getAuthoritiesAsString() {
+        StringBuilder authorityAsString = new StringBuilder();
+        this.authorities
+                .forEach(authority->{
+                    authorityAsString.append(authority.getAuthority()).append("|");
+                });
+        if(authorityAsString.lastIndexOf("|") == authorityAsString.length()-1) {
+            authorityAsString.deleteCharAt(authorityAsString.length()-1);
+        }
+        return authorityAsString.toString();
+    }
 
 }
