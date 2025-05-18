@@ -18,7 +18,7 @@ public class Subscription {
     @ManyToOne
     private Plan plan;
 
-    private boolean isActive;
+    private boolean active;
     private LocalDate startDate;
     private LocalDate endDate;
     private String externalSubscriptionId;

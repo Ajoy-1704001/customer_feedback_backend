@@ -11,12 +11,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class SubscriptionDTO {
-	public Long subscriptionId;
-	public Long planId;
-	public String planName;
-	public LocalDate startDate;
-	public LocalDate endDate;
-	public boolean active;
-    public String externalSubscriptionId;
+public class FeatureUsageDTO {
+	private String featureName;
+    private Integer usageCount;
+    private LocalDate lastUsed;
 }

@@ -43,7 +43,10 @@ public class PlanService {
         plan.setName(planDetails.getName());
         plan.setDescription(planDetails.getDescription());
         plan.setMaxForms(planDetails.getMaxForms());
-        plan.setMaxResponsesPerMonth(planDetails.getMaxResponsesPerMonth());
+        plan.setFeatures(planDetails.getFeatures());
+        plan.setFreePlan(planDetails.isFreePlan());
+        plan.setTrialEnabled(planDetails.isTrialEnabled());
+        plan.setTrialPeriod(planDetails.getTrialPeriod());
         plan.setPrice(planDetails.getPrice());
         plan.setBillingPeriod(planDetails.getBillingPeriod());
         

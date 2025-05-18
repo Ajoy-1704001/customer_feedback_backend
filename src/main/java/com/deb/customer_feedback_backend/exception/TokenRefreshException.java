@@ -1,8 +1,9 @@
 package com.deb.customer_feedback_backend.exception;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-@ResponseStatus
+@ResponseStatus(code = HttpStatus.FORBIDDEN)
 public class TokenRefreshException extends RuntimeException{
 	private static final long serialVersionUID = 1L;
 
